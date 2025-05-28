@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react"
 import { Canvas } from "@react-three/fiber"
 import { Stars } from "@react-three/drei"
-import { FiArrowRight, FiTarget, FiSmile, FiLock, FiLink } from "react-icons/fi"
+import { FiArrowRight, FiTarget, FiSmile, FiLock, FiLink, FiLogOut } from "react-icons/fi"
 import { auth, db } from "../js/firebase-init";
 import { doc, getDoc } from "firebase/firestore";
-import { onAuthStateChanged } from "firebase/auth";
-import { Link } from "react-router-dom";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import { Link, useNavigate } from "react-router-dom";
 import TiltCard from "./tiltcard";
 import { motion, useMotionTemplate, useMotionValue, animate } from "framer-motion"
 import { Accordion, AccordionContent, AccordionPanel, AccordionTitle } from "flowbite-react";
@@ -63,6 +63,17 @@ export default function Flow() {
   const [greetingLoading, setGreetingLoading] = useState(true);
   const [greetingError, setGreetingError] = useState("");
   const [openPanel, setOpenPanel] = useState(null);
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      navigate('/login');
+    } catch (error) {
+      console.error("Error signing out:", error);
+    }
+  };
+
   useEffect(() => {
     const greetingUser = async () => {
       onAuthStateChanged(auth, async (user) => {
@@ -98,7 +109,7 @@ export default function Flow() {
             <img src="/image/Sentinova.png" className="h-9" alt="Sentinova Logo" />
           </Link>
           <div className="hidden w-full md:block md:w-auto" id="navbar-default">
-            <ul className="font-medium flex">
+            <ul className="font-medium flex items-center gap-4">
               <li>
                 <span className="text-white font-poppins rounded-lg px-5 py-2.5">
                   {greetingLoading
@@ -107,6 +118,15 @@ export default function Flow() {
                       ? greetingError
                       : `Halo, ${username}`}
                 </span>
+              </li>
+              <li>
+                <button
+                  onClick={handleLogout}
+                  className="flex items-center gap-2 text-white hover:text-red-400 transition-colors duration-200 font-poppins rounded-lg px-4 py-2"
+                >
+                  <FiLogOut className="text-lg" />
+                  Logout
+                </button>
               </li>
             </ul>
           </div>
