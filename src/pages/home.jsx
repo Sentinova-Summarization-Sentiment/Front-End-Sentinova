@@ -92,23 +92,11 @@ const EnhancedHero = () => {
             <span className="bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent">
               SENTI
             </span>
-            <motion.span
-              initial={{ width: "0%" }}
-              animate={{ width: "100%" }}
-              transition={{ duration: 1.5, delay: 0.5, ease: "easeInOut" }}
-              className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-blue-500 to-purple-500"
-            />
           </span>
           <span className="inline-block relative ml-2">
             <span className="bg-gradient-to-r from-purple-200 via-blue-100 to-white bg-clip-text text-transparent">
               NOVA
             </span>
-            <motion.span
-              initial={{ width: "0%" }}
-              animate={{ width: "100%" }}
-              transition={{ duration: 1.5, delay: 0.8, ease: "easeInOut" }}
-              className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-purple-500 to-blue-500"
-            />
           </span>
         </h1>
 
@@ -133,21 +121,7 @@ const EnhancedHero = () => {
             transition={{ duration: 0.8, delay: 1.2 }}
             className="flex flex-col sm:flex-row gap-6 justify-center mt-12"
           >
-            <motion.button
-              whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(59, 130, 246, 0.5)" }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-10 py-5 rounded-xl text-lg font-medium flex items-center gap-3 transition-all duration-300 group"
-            >
-              Mulai Analisis
-              <FiArrowRight className="transition-transform group-hover:translate-x-1" />
-            </motion.button>
-            <motion.button
-              whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(255, 255, 255, 0.2)" }}
-              whileTap={{ scale: 0.95 }}
-              className="border border-white/20 bg-white/5 backdrop-blur-md text-gray-100 hover:bg-white/10 px-10 py-5 rounded-xl text-lg font-medium transition-all duration-300"
-            >
-              Lihat Demo
-            </motion.button>
+            {/* Button di bawah teks utama dihapus sesuai permintaan */}
           </motion.div>
         </motion.div>
       </motion.div>
@@ -443,7 +417,7 @@ const EnhancedFAQSection = () => {
   ]
 
   return (
-    <div className="py-24 px-4 relative overflow-hidden">
+    <div className="py-24 px-4 relative">
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
@@ -457,7 +431,7 @@ const EnhancedFAQSection = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent mb-4">
+          <h2 className="text-4xl font-bold leading-tight bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent mb-4 pb-2">
             Pertanyaan Umum
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
@@ -474,15 +448,16 @@ const EnhancedFAQSection = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
               className="group"
+              onMouseEnter={() => setOpenPanel(index)}
+              onMouseLeave={() => setOpenPanel(null)}
             >
               <div
-                className={`bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl overflow-hidden transition-all duration-300 ${
-                  openPanel === index ? "shadow-lg shadow-blue-500/10" : ""
+                className={`bg-black/70 backdrop-blur-md border border-white/10 rounded-2xl shadow-xl p-6 overflow-hidden transition-all duration-300 ${
+                  openPanel === index ? "shadow-blue-500/10" : ""
                 }`}
               >
-                <button
-                  onClick={() => setOpenPanel(openPanel === index ? null : index)}
-                  className="w-full flex items-center justify-between p-6 text-left focus:outline-none"
+                <div
+                  className="w-full flex items-center justify-between text-left focus:outline-none cursor-pointer"
                 >
                   <span className="text-xl font-medium text-white group-hover:text-blue-300 transition-colors">
                     {faq.question}
@@ -506,7 +481,7 @@ const EnhancedFAQSection = () => {
                       <polyline points="6 9 12 15 18 9"></polyline>
                     </svg>
                   </motion.span>
-                </button>
+                </div>
                 <motion.div
                   initial={false}
                   animate={{
@@ -516,7 +491,7 @@ const EnhancedFAQSection = () => {
                   transition={{ duration: 0.3 }}
                   className="overflow-hidden"
                 >
-                  <div className="p-6 pt-0 text-gray-300 leading-relaxed border-t border-white/5">{faq.answer}</div>
+                  <div className="pt-4 text-gray-300 leading-relaxed border-t border-white/5">{faq.answer}</div>
                 </motion.div>
               </div>
             </motion.div>
@@ -616,13 +591,13 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1, duration: 0.7 }}
               viewport={{ once: true }}
-              className="w-full"
+              className="w-full flex justify-center"
             >
               <TiltCard
                 icon={<FiTarget className="text-green-400 text-3xl" />}
                 title="Akurasi Tinggi"
                 description="Didukung AI mutakhir untuk analisis sentimen dan ringkasan ulasan yang presisi."
-                className="relative h-96 w-72 rounded-xl bg-gradient-to-br from-indigo-300 to-violet-300"
+                className="relative h-96 w-full max-w-xs rounded-xl bg-gradient-to-br from-indigo-300 to-violet-300"
               />
             </motion.div>
             <motion.div
@@ -630,13 +605,13 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.7 }}
               viewport={{ once: true }}
-              className="w-full"
+              className="w-full flex justify-center"
             >
               <TiltCard
                 icon={<FiSmile className="text-yellow-300 text-3xl" />}
                 title="Mudah Digunakan"
                 description="Antarmuka sederhana, hasil instan tanpa perlu keahlian teknis."
-                className="relative h-96 w-72 rounded-xl bg-gradient-to-br from-blue-300 to-cyan-300"
+                className="relative h-96 w-full max-w-xs rounded-xl bg-gradient-to-br from-blue-300 to-cyan-300"
               />
             </motion.div>
             <motion.div
@@ -644,13 +619,13 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.7 }}
               viewport={{ once: true }}
-              className="w-full"
+              className="w-full flex justify-center"
             >
               <TiltCard
                 icon={<FiLock className="text-blue-400 text-3xl" />}
                 title="Privasi Terjamin"
                 description="Data Anda aman dan tidak dibagikan ke pihak ketiga."
-                className="relative h-96 w-72 rounded-xl bg-gradient-to-br from-pink-300 to-fuchsia-300"
+                className="relative h-96 w-full max-w-xs rounded-xl bg-gradient-to-br from-pink-300 to-fuchsia-300"
               />
             </motion.div>
             <motion.div
@@ -658,13 +633,13 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.7 }}
               viewport={{ once: true }}
-              className="w-full"
+              className="w-full flex justify-center"
             >
               <TiltCard
                 icon={<FiLink className="text-pink-400 text-3xl" />}
                 title="Integrasi Mudah"
                 description="Anda dapat terhubung dengan sistem hanya dalam beberapa langkah."
-                className="relative h-96 w-72 rounded-xl bg-gradient-to-br from-emerald-300 to-lime-300"
+                className="relative h-96 w-full max-w-xs rounded-xl bg-gradient-to-br from-emerald-300 to-lime-300"
               />
             </motion.div>
           </div>

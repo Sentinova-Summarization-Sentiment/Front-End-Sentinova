@@ -69,38 +69,37 @@ export default function Login() {
 
   return (
     <AnimatedBackground className="min-h-screen flex items-center justify-center px-4 py-8">
-      {/* Back to Home Button */}
-      <Link
-        to="/"
-        className="absolute top-6 left-6 z-20 flex items-center gap-2 text-white/80 hover:text-white transition-colors group"
-      >
-        <motion.div
-          whileHover={{ x: -5 }}
-          className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="transition-transform group-hover:-translate-x-1"
+      {/* Navbar transparan dengan tombol kembali di kiri atas */}
+      <nav className="fixed top-0 left-0 w-full z-20 shadow-none">
+        <div className="max-w-screen-xl flex items-center justify-start mx-auto p-3">
+          <Link
+            to="/"
+            className="flex items-center gap-2 text-white/80 hover:text-white transition-colors group"
           >
-            <path d="m12 19-7-7 7-7"></path>
-            <path d="M19 12H5"></path>
-          </svg>
-          <span className="text-sm font-medium">Kembali</span>
-        </motion.div>
-      </Link>
-
-      {/* Logo */}
-      <Link to="/" className="absolute top-6 right-6 z-20">
-        <img src="/image/Sentinova.png" className="h-8" alt="Sentinova Logo" />
-      </Link>
+            <motion.div
+              whileHover={{ x: -5 }}
+              className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="transition-transform group-hover:-translate-x-1"
+              >
+                <path d="m12 19-7-7 7-7"></path>
+                <path d="M19 12H5"></path>
+              </svg>
+              <span className="text-sm font-medium">Kembali</span>
+            </motion.div>
+          </Link>
+        </div>
+      </nav>
 
       {/* Floating background elements */}
       <motion.div
@@ -167,14 +166,14 @@ export default function Login() {
             <div className="space-y-2">
               <label className="text-sm font-medium text-gray-200 block">Email</label>
               <div className="relative">
-                <FiMail className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 text-lg" />
+                <FiMail className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white text-lg" />
                 <motion.input
                   whileFocus={{ scale: 1.02 }}
                   type="email"
                   placeholder="Masukkan email Anda"
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
-                  className="w-full pl-12 pr-4 py-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all duration-300"
+                  className="w-full pl-12 pr-4 py-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 duration-300 hover:bg-black/40 focus:bg-black/40 transition-colors"
                   required
                 />
               </div>
@@ -182,22 +181,22 @@ export default function Login() {
 
             {/* Password Input */}
             <div className="space-y-2">
-              <label className="text-sm font-medium text-gray-200 block">Password</label>
+              <label className="text-sm font-medium text-gray-200 block drop-shadow-sm">Password</label>
               <div className="relative">
-                <FiLock className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 text-lg" />
+                <FiLock className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white text-lg" />
                 <motion.input
                   whileFocus={{ scale: 1.02 }}
                   type={showPassword ? "text" : "password"}
                   placeholder="Masukkan password Anda"
                   value={form.password}
                   onChange={(e) => setForm({ ...form, password: e.target.value })}
-                  className="w-full pl-12 pr-12 py-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all duration-300"
+                  className="w-full pl-12 pr-12 py-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 duration-300 shadow-md hover:bg-black/40 focus:bg-black/40 transition-colors"
                   required
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white transition-colors"
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white hover:text-white transition-colors focus:outline-none"
                 >
                   {showPassword ? <FiEyeOff className="text-lg" /> : <FiEye className="text-lg" />}
                 </button>
@@ -248,7 +247,7 @@ export default function Login() {
           transition={{ delay: 0.8, duration: 0.8 }}
           className="text-center mt-8"
         >
-          <p className="text-gray-400 text-sm">
+          <p className="text-white text-sm">
             Dengan masuk, Anda menyetujui{" "}
             <Link to="/terms" className="text-blue-400 hover:text-blue-300 transition-colors">
               Syarat & Ketentuan

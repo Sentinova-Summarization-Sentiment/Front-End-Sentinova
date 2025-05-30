@@ -259,7 +259,7 @@ export default function Sentiment() {
               />
             </div>
             <div className="h-32 md:h-48" />
-          </div>
+          </div>    
         )}
       </section>
     </>
