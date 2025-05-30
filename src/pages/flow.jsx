@@ -74,7 +74,7 @@ const StatCard = ({ title, value, icon, color, change, isLoading }) => {
   return (
     <motion.div
       whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.2)" }}
-      className="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-6 relative overflow-hidden"
+      className="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-6 relative overflow-hidden hover:bg-black/40 transition-colors"
     >
       {isLoading ? (
         <div className="animate-pulse space-y-3">
@@ -135,7 +135,7 @@ const AnalysisCard = ({ analysis, isLoading }) => {
   return (
     <motion.div
       whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.2)" }}
-      className="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-5 transition-all duration-300"
+      className="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-5 duration-300 hover:bg-black/40 transition-colors"
     >
       {isLoading ? (
         <div className="animate-pulse space-y-3">
@@ -339,7 +339,7 @@ const DashboardContent = ({ username, isLoading }) => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
           <motion.button
             whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.2)" }}
-            className="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/10 rounded-xl p-4 flex flex-col items-center gap-3 transition-all duration-300"
+            className="bg-white/10 hover:bg-black/40 backdrop-blur-sm border border-white/10 rounded-xl p-4 flex flex-col items-center gap-3 transition-all duration-300"
           >
             <div className="p-3 rounded-full bg-blue-500/20">
               <FiUpload className="text-blue-400 text-xl" />
@@ -348,7 +348,7 @@ const DashboardContent = ({ username, isLoading }) => {
           </motion.button>
           <motion.button
             whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.2)" }}
-            className="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/10 rounded-xl p-4 flex flex-col items-center gap-3 transition-all duration-300"
+            className="bg-white/10 hover:bg-black/40 backdrop-blur-sm border border-white/10 rounded-xl p-4 flex flex-col items-center gap-3 transition-all duration-300"
           >
             <div className="p-3 rounded-full bg-green-500/20">
               <FiFileText className="text-green-400 text-xl" />
@@ -357,7 +357,7 @@ const DashboardContent = ({ username, isLoading }) => {
           </motion.button>
           <motion.button
             whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.2)" }}
-            className="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/10 rounded-xl p-4 flex flex-col items-center gap-3 transition-all duration-300"
+            className="bg-white/10 hover:bg-black/40 backdrop-blur-sm border border-white/10 rounded-xl p-4 flex flex-col items-center gap-3 transition-all duration-300"
           >
             <div className="p-3 rounded-full bg-purple-500/20">
               <FiSearch className="text-purple-400 text-xl" />
@@ -366,7 +366,7 @@ const DashboardContent = ({ username, isLoading }) => {
           </motion.button>
           <motion.button
             whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.2)" }}
-            className="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/10 rounded-xl p-4 flex flex-col items-center gap-3 transition-all duration-300"
+            className="bg-white/10 hover:bg-black/40 backdrop-blur-sm border border-white/10 rounded-xl p-4 flex flex-col items-center gap-3 transition-all duration-300"
           >
             <div className="p-3 rounded-full bg-yellow-500/20">
               <FiDownload className="text-yellow-400 text-xl" />
@@ -615,7 +615,7 @@ const ReportsContent = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <motion.div
           whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.2)" }}
-          className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6"
+          className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 hover:bg-black/40 transition-colors"
         >
           <div className="flex justify-between items-start mb-4">
             <h2 className="text-xl font-bold text-white">Laporan Mingguan</h2>
@@ -635,7 +635,7 @@ const ReportsContent = () => {
 
         <motion.div
           whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.2)" }}
-          className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6"
+          className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 hover:bg-black/40 transition-colors"
         >
           <div className="flex justify-between items-start mb-4">
             <h2 className="text-xl font-bold text-white">Laporan Bulanan</h2>
@@ -661,7 +661,7 @@ const ReportsContent = () => {
             <motion.div
               key={i}
               whileHover={{ x: 5 }}
-              className="flex justify-between items-center p-4 border border-white/10 rounded-lg hover:bg-white/5 transition-all duration-200"
+              className="flex justify-between items-center p-4 border border-white/10 rounded-lg hover:bg-black/40 duration-200 transition-colors"
             >
               <div>
                 <h3 className="text-white font-medium">Laporan Analisis Sentimen #{i}</h3>
@@ -882,24 +882,6 @@ export default function Flow() {
               <span className="text-white">
                 {isLoading ? "Loading..." : greetingError ? greetingError : `Halo, ${username}`}
               </span>
-              <button className="p-2 bg-white/10 rounded-lg">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="text-white"
-                >
-                  <line x1="3" y1="12" x2="21" y2="12"></line>
-                  <line x1="3" y1="6" x2="21" y2="6"></line>
-                  <line x1="3" y1="18" x2="21" y2="18"></line>
-                </svg>
-              </button>
             </div>
           </div>
         </div>
