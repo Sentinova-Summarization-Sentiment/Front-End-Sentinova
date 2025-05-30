@@ -47,10 +47,10 @@ const AnimatedBackground = ({ children, className, speed = 12, colorIndex = 0 })
     })
   }, [])
 
-  const backgroundImage = useMotionTemplatelinear-gradient(to bottom, #020617 10%, ${color} 50%, ${bottomColor} 100%)
+  const backgroundImage = useMotionTemplate`linear-gradient(to bottom, #020617 10%, ${color} 50%, ${bottomColor} 100%)`
 
   return (
-    <motion.div style={{ backgroundImage }} className={relative overflow-hidden ${className}}>
+    <motion.div style={{ backgroundImage }} className={`relative overflow-hidden ${className}`}>
       <div className="absolute inset-0">
         <Canvas>
           <Stars radius={100} depth={50} count={5000} factor={4} fade speed={1} />
@@ -84,18 +84,18 @@ const StatCard = ({ title, value, icon, color, change, isLoading }) => {
         </div>
       ) : (
         <>
-          <div className={absolute top-0 right-0 w-24 h-24 ${color} rounded-full blur-3xl opacity-20}></div>
+          <div className={`absolute top-0 right-0 w-24 h-24 ${color} rounded-full blur-3xl opacity-20`}></div>
           <div className="flex justify-between items-start mb-4">
             <h3 className="text-gray-400 font-medium">{title}</h3>
-            <div className={p-2 rounded-lg ${color} bg-opacity-20}>{icon}</div>
+            <div className={`p-2 rounded-lg ${color} bg-opacity-20`}>{icon}</div>
           </div>
           <p className="text-3xl font-bold text-white mb-2">{value}</p>
           {change && (
             <div className="flex items-center gap-1">
               <span
-                className={text-sm font-medium ${
+                className={`text-sm font-medium ${
                   change.startsWith("+") ? "text-green-400" : change.startsWith("-") ? "text-red-400" : "text-gray-400"
-                }}
+                }`}
               >
                 {change}
               </span>
@@ -153,7 +153,7 @@ const AnalysisCard = ({ analysis, isLoading }) => {
             <span className="text-gray-400 text-sm">{analysis.date}</span>
           </div>
           <div className="flex items-center gap-2 mb-3">
-            <span className={w-3 h-3 rounded-full ${getSentimentColor(analysis.sentiment)}}></span>
+            <span className={`w-3 h-3 rounded-full ${getSentimentColor(analysis.sentiment)}`}></span>
             <span className="text-gray-300 text-sm">
               {getSentimentText(analysis.sentiment)} ({Math.round(analysis.score * 100)}%)
             </span>
@@ -161,7 +161,7 @@ const AnalysisCard = ({ analysis, isLoading }) => {
           <div className="flex justify-between items-center">
             <span className="text-gray-400 text-sm">{analysis.count} ulasan</span>
             <Link
-              to={/analysis/${analysis.id}}
+              to={`/analysis/${analysis.id}`}
               className="text-blue-400 hover:text-blue-300 text-sm flex items-center gap-1 transition-colors"
             >
               Lihat Detail
@@ -208,9 +208,9 @@ const Sidebar = ({ activeTab, setActiveTab }) => {
           <button
             key={item.id}
             onClick={() => setActiveTab(item.id)}
-            className={w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 ${
+            className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 ${
               activeTab === item.id ? "bg-blue-600/30 text-white" : "text-gray-400 hover:bg-white/10 hover:text-white"
-            }}
+            }`}
           >
             <span className="text-lg">{item.icon}</span>
             <span>{item.label}</span>
@@ -536,7 +536,7 @@ const HistoryContent = () => {
                   <td className="px-6 py-4 text-gray-300">{item.date}</td>
                   <td className="px-6 py-4">
                     <div className="flex items-center gap-2">
-                      <span className={w-2 h-2 rounded-full ${getSentimentColor(item.sentiment)}}></span>
+                      <span className={`w-2 h-2 rounded-full ${getSentimentColor(item.sentiment)}`}></span>
                       <span className="text-gray-300">{getSentimentText(item.sentiment)}</span>
                     </div>
                   </td>
@@ -700,9 +700,9 @@ const SettingsContent = () => {
               {["Profil", "Notifikasi", "Keamanan", "Integrasi", "API", "Tema"].map((item, i) => (
                 <button
                   key={i}
-                  className={w-full text-left px-4 py-3 rounded-lg transition-colors ${
+                  className={`w-full text-left px-4 py-3 rounded-lg transition-colors ${
                     i === 0 ? "bg-blue-600/30 text-white" : "text-gray-400 hover:bg-white/10 hover:text-white"
-                  }}
+                  }`}
                 >
                   {item}
                 </button>
@@ -880,7 +880,7 @@ export default function Flow() {
             </Link>
             <div className="flex items-center gap-4">
               <span className="text-white">
-                {isLoading ? "Loading..." : greetingError ? greetingError : Halo, ${username}}
+                {isLoading ? "Loading..." : greetingError ? greetingError : `Halo, ${username}`}
               </span>
             </div>
           </div>
@@ -891,3 +891,4 @@ export default function Flow() {
       </div>
     </AnimatedBackground>
   )
+}
