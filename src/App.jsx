@@ -6,6 +6,8 @@ import Sentiment from './pages/sentiment';
 import Login from "./pages/login";
 import Flow from "./pages/flow";
 import Register from "./pages/Register";
+import Damn from "./pages/damn";
+
 import './app.css';
 import './index.css';
 
@@ -17,6 +19,7 @@ function App() {
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/flow" element={<Flow />} />
+      <Route path="/damn" element={<Damn />} />
     </Routes>
   );
 }
