@@ -1,6 +1,3 @@
-You said:
-tolong pisahin
-
 import { useEffect, useState } from "react"
 import { Canvas } from "@react-three/fiber"
 import { Stars } from "@react-three/drei"
