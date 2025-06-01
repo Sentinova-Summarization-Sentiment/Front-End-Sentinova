@@ -1,10 +1,10 @@
 import { motion } from "framer-motion"
 
-const StatCard = ({ title, value, icon, color, change, isLoading }) => {
+const StatCard = ({ title, value, icon, color, change, isLoading, cardClassName = "" }) => {
   return (
     <motion.div
-      whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.2)" }}
-      className="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-6 relative overflow-hidden"
+      whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.2)", backgroundColor: "rgba(0,0,0,0.7)" }}
+      className={`bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-6 relative overflow-hidden transition-colors duration-300 hover:bg-black/70 ${cardClassName}`}
     >
       {isLoading ? (
         <div className="animate-pulse space-y-3">
