@@ -4,6 +4,7 @@ const StatCard = ({ title, value, icon, color, change, isLoading, cardClassName 
   return (
     <motion.div
       whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.2)", backgroundColor: "rgba(0,0,0,0.7)" }}
+      transition={{ type: "spring", stiffness: 300, damping: 30, backgroundColor: { duration: 0.1 } }}
       className={`bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-6 relative overflow-hidden transition-colors duration-300 hover:bg-black/70 ${cardClassName}`}
     >
       {isLoading ? (
