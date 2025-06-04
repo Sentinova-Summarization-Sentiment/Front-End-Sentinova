@@ -110,7 +110,7 @@ const AnalysisContent = () => {
               value={productName}
               onChange={(e) => setProductName(e.target.value)}
               placeholder="Masukkan nama produk yang akan dianalisis"
-              className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all"
+              className="w-full px-4 py-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 duration-300 shadow-md hover:bg-black/40 focus:bg-black/40 transition-colors"
               required
             />
           </div>
@@ -164,7 +164,7 @@ const AnalysisContent = () => {
             <h2 className="text-xl font-semibold text-white mb-4">Upload File</h2>
 
             <div
-              className={`border-2 border-dashed rounded-xl p-8 text-center transition-all ${
+              className={`border-2 border-dashed rounded-xl p-8 text-center transition-all duration-300 hover:bg-black/40 ${
                 dragActive
                   ? "border-blue-400 bg-blue-400/10"
                   : selectedFile
@@ -228,7 +228,7 @@ const AnalysisContent = () => {
                 placeholder="Masukkan ulasan produk yang ingin dianalisis. Pisahkan setiap ulasan dengan baris baru atau tanda pemisah yang jelas..."
                 rows={12}
                 maxLength={5000}
-                className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all resize-none"
+                className="w-full px-4 py-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 duration-300 shadow-md hover:bg-black/40 focus:bg-black/40 transition-colors resize-none"
                 required
               />
               <p className="text-gray-400 text-sm mt-2">

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 import { motion } from "framer-motion"
 import { FiArrowRight } from "react-icons/fi"
 
-const AnalysisCard = ({ analysis, isLoading }) => {
+const AnalysisCard = ({ analysis, isLoading, cardClassName = "" }) => {
   const getSentimentColor = (sentiment) => {
     switch (sentiment) {
       case "positive":
@@ -27,8 +27,9 @@ const AnalysisCard = ({ analysis, isLoading }) => {
 
   return (
     <motion.div
-      whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.2)" }}
-      className="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-5 transition-all duration-300"
+      whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.2)", backgroundColor: "rgba(0,0,0,0.7)" }}
+      transition={{ type: "spring", stiffness: 300, damping: 30, backgroundColor: { duration: 0.1 } }}
+      className={`bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-5 transition-all duration-300 hover:bg-black/70 ${cardClassName}`}
     >
       {isLoading ? (
         <div className="animate-pulse space-y-3">
