@@ -1,5 +1,3 @@
-"use client"
-
 const ReportsContent = () => {
   return (
     <div className="p-6">
