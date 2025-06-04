@@ -571,7 +571,7 @@ export default function Home() {
       to="/login"
       className={`relative inline-flex items-center justify-center px-8 py-3 h-12 min-w-[120px] text-base rounded-xl font-poppins tracking-wide shadow-md transition-all duration-300 hover:scale-105 border border-white/10 ${
         currentPath === "/login"
-          ? "bg-gradient-to-r from-purple-400 via-blue-400 via-pink-400 to-green-400 text-white"
+          ? "bg-gradient-to-r from-purple-400 via-blue-400 to-green-400 text-white"
           : "bg-gray-800 text-white hover:shadow-lg"
       }`}
     >
@@ -584,7 +584,7 @@ export default function Home() {
     <Link
   to="/register"
   className={`relative inline-block px-8 py-3 h-12 min-w-[120px] text-base rounded-xl
-    bg-gradient-to-r from-purple-400 via-blue-400 via-pink-400 to-green-400 text-white font-poppins tracking-wide shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105`}
+    bg-gradient-to-r from-purple-400 via-blue-400 to-green-400 text-white font-poppins tracking-wide shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105`}
 >
   <span className="absolute inset-0 bg-white/10 opacity-0 hover:opacity-10 transition-opacity duration-300 rounded-xl"></span>
   <span className="relative z-10">Register</span>
