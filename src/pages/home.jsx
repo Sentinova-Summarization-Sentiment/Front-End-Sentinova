@@ -5,6 +5,7 @@ import { FiArrowRight, FiTarget, FiSmile, FiLock, FiLink } from "react-icons/fi"
 import { Link } from "react-router-dom"
 import TiltCard from "./tiltcard"
 import { motion, useMotionTemplate, useMotionValue, animate } from "framer-motion"
+import { useLocation } from "react-router-dom";
 
 // Expanded color palette for the entire site
 const COLORS_TOP = ["#13FFAA", "#1E67C6", "#CE84CF", "#DD335C"]
@@ -528,6 +529,9 @@ const EnhancedFAQSection = () => {
 }
 
 export default function Home() {
+  const location = useLocation();
+  const currentPath = location.pathname;
+
   return (
     <AnimatedBackground className="min-h-screen">
       {/* Navbar */}
@@ -561,24 +565,34 @@ export default function Home() {
             </svg>
           </button>
           <div className="hidden w-full md:block md:w-auto" id="navbar-default">
-            <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 md:flex-row md:mt-0">
-              <li>
-                <Link
-                  to="/login"
-                  className="text-white font-poppins text-sm px-5 py-2.5 me-2 mb-2 transition inline-block text-center hover:bg-white/10 rounded-lg"
-                >
-                  Login
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/Register"
-                  className="text-white bg-blue-600/80 hover:bg-blue-700/90 backdrop-blur-sm focus:ring-4 focus:outline-none focus:ring-blue-300/50 font-poppins rounded-lg text-sm px-5 py-2.5 me-2 mb-2 transition inline-block text-center"
-                >
-                  Register
-                </Link>
-              </li>
-            </ul>
+     <ul className="font-medium flex flex-col md:flex-row gap-4 p-4 md:p-0 mt-4 md:mt-0 md:ml-auto">
+  <li>
+    <Link
+      to="/login"
+      className={`relative inline-flex items-center justify-center px-8 py-3 h-12 min-w-[120px] text-base rounded-xl font-poppins tracking-wide shadow-md transition-all duration-300 hover:scale-105 border border-white/10 ${
+        currentPath === "/login"
+          ? "bg-gradient-to-r from-purple-400 via-blue-400 via-pink-400 to-green-400 text-white"
+          : "bg-gray-800 text-white hover:shadow-lg"
+      }`}
+    >
+      <span className="absolute inset-0 bg-white/10 opacity-0 hover:opacity-10 transition-opacity duration-300 rounded-xl"></span>
+      <span className="relative z-10">Login</span>
+    </Link>
+  </li>
+
+  <li>
+    <Link
+  to="/register"
+  className={`relative inline-block px-8 py-3 h-12 min-w-[120px] text-base rounded-xl
+    bg-gradient-to-r from-purple-400 via-blue-400 via-pink-400 to-green-400 text-white font-poppins tracking-wide shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105`}
+>
+  <span className="absolute inset-0 bg-white/10 opacity-0 hover:opacity-10 transition-opacity duration-300 rounded-xl"></span>
+  <span className="relative z-10">Register</span>
+</Link>
+
+
+  </li>
+</ul>
           </div>
         </div>
       </nav>
